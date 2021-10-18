@@ -10,7 +10,7 @@ SO THAT I can review samples of their work and assess whether they're a good can
 
 # Grading Requirements
 
-# Acceptance Criteria
+<h2> Acceptance Criteria </h2>
 
 GIVEN I need to sample a potential employee's previous work <br>
 WHEN I load their portfolio <br>
@@ -26,22 +26,22 @@ THEN I am taken to that deployed application <br>
 WHEN I resize the page or view the site on various screens and devices <br>
 THEN I am presented with a responsive layout that adapts to my viewport <br>
 
-# Technical Acceptance Criteria: 40%
+<h2> Technical Acceptance Criteria: 40% </h2>
 
 Satisfies all of the preceding acceptance criteria. <br>
 
-# Deployment: 32%
+<h2> Deployment: 32% </h2>
 
 Application deployed at live URL. <br>
 Application loads with no errors. <br>
 Application GitHub URL submitted. <br>
 GitHub repository contains application code. <br>
 
-# Application Quality: 15% <br>
+<h2> Application Quality: 15% <br> </h2>
 
 Application resembles the mock-up functionality provided in the Challenge instructions. <br>
 
-# Repository Quality: 13% <br>
+<h2> Repository Quality: 13% <br> </h2>
 
 Repository has a unique name. <br>
 Repository follows best practices for file structure and naming conventions. <br>
