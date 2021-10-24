@@ -174,8 +174,8 @@ div.project {
 }
 .popupContainer {
   opacity: 0;
-  display: flex;
-  position: none;
+  display: none;
+  position: fixed;
   top: 25vh;
   width: 100%;
   justify-content: center;
