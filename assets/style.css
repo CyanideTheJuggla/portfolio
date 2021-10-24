@@ -173,10 +173,9 @@ div.project {
   border: 10px solid rgb(0 0 0 / 0%);
 }
 .popupContainer {
-  visibility: hidden;
   opacity: 0;
   display: flex;
-  position: fixed;
+  position: none;
   top: 25vh;
   width: 100%;
   justify-content: center;

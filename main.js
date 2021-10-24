@@ -56,7 +56,7 @@ const resetCountDown = () => {
 
 const popupAlert = () =>{
     
-    º('.popupContainer').css('visibility', 'visible');
+    º('.popupContainer').css('display', 'flex');
     º('.popupHeader').html('Attention!');
     º('.popupContent').html(config.query);
     º('.popupContainer').animate({opacity: 1}, 500);
