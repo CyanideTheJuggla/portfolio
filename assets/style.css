@@ -28,7 +28,7 @@ h1 {
   font-family: system-ui;
 }
 .container {
-  width: 80%;
+  width: 80vw;
   padding: 20px;
   min-height: 600px;
   margin: 85px auto 0px auto;
@@ -75,7 +75,7 @@ h1 {
 footer {
   position: relative;
   bottom: -10px;
-  left: -27px;
+  left: -10px;
   width: 100vw;
   height: 80px;
   background-color: rgb(77, 107, 77);
@@ -115,8 +115,7 @@ div.header {
 }
 
 .avatarImage {
-  height: 300px;
-  width: 300px;
+  height: 25vw;
   border: 10px solid black;
   border-radius: 100%;
 }
@@ -126,8 +125,17 @@ div.project {
   border-radius: 8px;
   overflow: hidden;
   display: table;
-  margin: 70px 0 50px 0;
+  margin: 10px 0 20px 0;
   background-color: rgba(255, 255, 255, 0.15);
+}
+.feature {
+  width: 80vw;
+}
+.featureImage {
+  width: 80vw;
+}
+.projectImg {
+  width: 40vw;
 }
 .row {
   display: table-row;
@@ -135,6 +143,9 @@ div.project {
 .cell {
   display: table-cell;
   margin: 5px;
+}
+.centered {
+  text-align: center;
 }
 
 .countDown {
@@ -162,6 +173,7 @@ div.project {
   border: 10px solid rgb(0 0 0 / 0%);
 }
 .popupContainer {
+  visibility: hidden;
   opacity: 0;
   display: flex;
   position: fixed;
@@ -211,14 +223,16 @@ button:active {
 }
 
 @media screen and (max-width: 750px) {
+  .project img {
+    max-width: 40vw;
+  }
+  .project.feature img {
+    max-width: 80vw;
+  }
   .navBar ul {
     width: 80vw;
   }
   .logo {
     display: none;
-  }
-  div.placeholderImage {
-    width: 20%;
-    height: 20%;
   }
 }
