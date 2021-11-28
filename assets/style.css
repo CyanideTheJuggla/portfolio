@@ -126,7 +126,7 @@ div.project {
   overflow: hidden;
   display: table;
   margin: 10px 0 20px 0;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 .feature {
   width: 80vw;
@@ -146,6 +146,23 @@ div.project {
 }
 .centered {
   text-align: center;
+}
+.featureText {
+  font-size: x-large;
+}
+.title {
+  font-weight: bold;
+}
+.caption {
+  font-style: italic;
+  font-weight: lighter;
+  color: rgb(0 0 0 / 50%);
+}
+.featureText.caption {
+  font-size: large;
+}
+.lh-none {
+  line-height: 0px;
 }
 
 .countDown {
@@ -221,17 +238,49 @@ button:active {
   background-color: var(--buttonPrimaryClick);
 }
 
-@media screen and (max-width: 750px) {
-  .project img {
-    max-width: 40vw;
+.loaderContainer {
+  position: absolute;
+  display: flex;
+  z-index: -1;
+  justify-content: center;
+  width: 100%;
+  top: 65vw;
+  left: 0px;
+}
+.lds-loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-loader div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-loader div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-loader div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-loader div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-loader {
+  0% {
+    top: 8px;
+    height: 64px;
   }
-  .project.feature img {
-    max-width: 80vw;
-  }
-  .navBar ul {
-    width: 80vw;
-  }
-  .logo {
-    display: none;
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
   }
 }

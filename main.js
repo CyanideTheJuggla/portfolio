@@ -1,6 +1,6 @@
 const º = jQuery;
 const config = {
-    dev: (document.location.origin == 'http://127.0.0.1:5500'),
+    dev: (document.location.origin.includes('127.0.0.1')),
     avatar: 'https://avatars.githubusercontent.com/u/8226118?v=4',
     name: 'Scott Howell',
     query: "You're going to give me an A on this, right?",
@@ -15,6 +15,7 @@ const milliToSecond = 1000;
 let countDownTimer = config.countDown;
 
 let counter;
+let carousel;
 let alertId;
 
 const contactElement = 
@@ -32,9 +33,11 @@ const projectElements =
     </div></td></tr>`
 
 const featureProjectElement = 
-    `<div class="project feature"><a href="https://cyanidethejuggla.github.io/Horiseon-refactor/Horiseon/">
-    <img class="featureImage" src="https://via.placeholder.com/1100x400?text=Horiseon%20Placeholder" alt="placeholder">
-    </a><div class="row"><p class="centered">Accessible codebase for marketing company</p></div></div>`
+    `<div class="project feature">
+    <a href="https://cyanidethejuggla.github.io/hangmans-revenge/">
+    <img class="featureImage" src="./assets/img/hangmanScreenshot.PNG" alt="placeholder">
+    </a><div class="row lh-none"><p class="centered featureText title "> Hangman's Revenge </p><p class="centered featureText caption "> A word game for the quick witted and thick skinned. </p></div></div>`;
+
 
 const resolutionDisplay = () => {
     const target = º(window);
@@ -46,10 +49,11 @@ const setAvatarImage = () => {
     target.append(`<img src="${config.avatar}" class="avatarImage" />`);
     target.prepend(`<h1>Scott Howell</h1>`);
 }; 
+
 const setContactInfo = () => {
     const target = º('#contact');
     target.html(contactElement);
-}
+};
 const resetCountDown = () => {
     countDownTimer = config.countDown;
 };
@@ -60,15 +64,18 @@ const popupAlert = () =>{
     º('.popupHeader').html('Attention!');
     º('.popupContent').html(config.query);
     º('.popupContainer').animate({opacity: 1}, 500);
-}
+};
+
 const dismissAlert = () => {
     º('.popupContainer').animate({opacity: 0}, 500);
-}
+};
+
 const setTimerText = () => {
     º('.countDown').text(`${countDownTimer.toPrecision(
         (countDownTimer >= 10) ? 3 : 
             (countDownTimer >= 1) ? 2 : 1) } seconds`);
-}
+};
+
 const ñ = function () { 
     setTimerText();
     countDownTimer = Math.fround(countDownTimer);
@@ -90,6 +97,41 @@ const buildHeader = () => {
     setContactInfo();
 };
 
+const hangmanAlt = () => {
+    //console.log('Firing hangmanAlt');
+    const featureImageSelect = º('.featureImage');
+    const featureLink = º('.project.feature a');
+    const featureTitle = º('.featureText.title');
+    const featureCaption = º('.centered.featureText.caption');
+    
+    º('.project.feature').children().animate({left: '150vw'}, 840);
+    setTimeout(()=>{
+        º('.project.feature').children().css('left', '-150vw');
+        const titleText = featureTitle.html();
+
+        if(!titleText.includes('Alternative')){
+            featureImageSelect.attr('src', './assets/img/hangmanScreenshotAlt.PNG');
+            featureLink.attr('href', 'https://cyanidethejuggla.github.io/hangmans-revenge-alt/');
+            featureTitle.html(`Hangman's Revenge Alternative`);
+            featureCaption.html(`An alternative word game for the quick witted and thick skinned.`);
+            
+        } else {
+            featureImageSelect.attr('src', './assets/img/hangmanScreenshot.PNG');
+            featureLink.attr('href', 'https://cyanidethejuggla.github.io/hangmans-revenge/');
+            featureTitle.html(`Hangman's Revenge`);
+            featureCaption.html(`A word game for the quick witted and thick skinned.`);
+        }
+        setTimeout(()=>{
+            º('.project.feature').children().animate({left: 0}, 850);
+        }, 10);
+    }, 850);
+};
+
+const stopCarousel = () => {
+    if(carousel) { clearInterval(carousel); carousel = undefined; }
+    else carousel = setInterval(hangmanAlt, 15000);
+}
+
 º(window).resize(() => {
     resolutionDisplay();
 });
@@ -97,7 +139,6 @@ const buildHeader = () => {
 window.onload = () => {
     console.log('window.onload()');
 };
-
 
 º(document).ready(()=>{
     console.log('º(document).ready()');
@@ -121,4 +162,7 @@ window.onload = () => {
     resolutionDisplay();
     if(!config.dev) ñ();
     º("a:not(nav li a)").attr('target', '_blank');
+    º('.project.feature').children().css('position', 'relative');
+    º('.project.feature a').click(stopCarousel)
+    carousel = setInterval(hangmanAlt, 15000);
 }); 

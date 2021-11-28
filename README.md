@@ -4,7 +4,7 @@ bootcamp portfolio project
 
 Deployment: https://cyanidethejuggla.github.io/portfolio/
 
-Screenshot I guess:<br>
+Screenshot (mobile):<br>
 <img src="Screenshot.jpg" style="width: 20vw">
 
 # User Story
