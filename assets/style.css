@@ -196,6 +196,7 @@ div.project {
   top: 25vh;
   width: 100%;
   justify-content: center;
+  z-index: 100000;
 }
 .popupAction {
   bottom: -60px;
