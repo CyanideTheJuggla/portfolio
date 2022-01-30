@@ -17,7 +17,8 @@ const config = {
             },
             discription: 'A word game for the quick witted and thick skinned.',
             cssClass: false,
-            link: 'https://cyanidethejuggla.github.io/hangmans-revenge/'
+            link: 'https://cyanidethejuggla.github.io/hangmans-revenge/',
+            github: 'https://github.com/CyanideTheJuggla/hangmans-revenge'
         },
         {    
             isProject: true,
@@ -28,7 +29,8 @@ const config = {
             },   
             discription: 'Social Network for Exercise Enthusiasts',  
             cssClass: false,  
-            link: 'https://spottr-projecttwo.herokuapp.com/'
+            link: 'https://spottr-projecttwo.herokuapp.com/',
+            github: 'https://github.com/Rush0218/spottr'
         },
     ],
     ipsum: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. '
