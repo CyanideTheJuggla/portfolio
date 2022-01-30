@@ -135,7 +135,9 @@ div.project {
   width: 80vw;
 }
 .projectImg {
-  width: 40vw;
+  max-width: 525px;
+  height: 315px;
+  width: auto;
 }
 .row {
   display: table-row;

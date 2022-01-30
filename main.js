@@ -7,8 +7,37 @@ const config = {
     enough: 2,
     countDown: 30,
     projectRowsCount: 3,
+    projects: [
+        {
+            isProject: true,
+            title: `Hangman's Revenge`,
+            img: {
+                src: './assets/img/hangmanScreenshot.PNG',
+                alt: `Hangman's Revenge Title Screen`
+            },
+            discription: 'A word game for the quick witted and thick skinned.',
+            cssClass: false,
+            link: 'https://cyanidethejuggla.github.io/hangmans-revenge/'
+        },
+        {    
+            isProject: true,
+            title: `Spottr`,  
+            img: {        
+                src: './assets/img/spottr.PNG',  
+                alt: `Spottr Home Page`    
+            },   
+            discription: 'Social Network for Exercise Enthusiasts',  
+            cssClass: false,  
+            link: 'https://spottr-projecttwo.herokuapp.com/'
+        },
+    ],
     ipsum: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. '
 };
+
+
+/*
+{    isProject: true,    title: ``,    img: {        src: '',        alt: ``    },    discription: '',    cssClass: '',    link: ''},
+*/
 
 let enough = 0;
 const milliToSecond = 1000;
@@ -19,25 +48,48 @@ let carousel;
 let alertId;
 
 const contactElement = 
-    `<a href="https://www.linkedin.com/in/howell-cscott/">
-    <img src="https://cdn-icons-png.flaticon.com/128/124/124011.png" style="height: 60px;" />
-    </a><a href="https://github.com/CyanideTheJuggla">
-    <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" style="height: 60px;">
-    </a><a href="mailTo:howell.cscott@gmail.com">
-    <img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" style="height: 60px;"></a>`;
+    `<a href="https://www.linkedin.com/in/howell-cscott/">` +
+    `<img src="https://cdn-icons-png.flaticon.com/128/124/124011.png" style="height: 60px;" />` +
+    `</a><a href="https://github.com/CyanideTheJuggla">` +
+    `<img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" style="height: 60px;">` +
+    `</a><a href="mailTo:howell.cscott@gmail.com">` +
+    `<img src="https://cdn-icons-png.flaticon.com/128/732/732200.png" style="height: 60px;"></a>`;
 
-const projectElements = 
-    `<tr><td><div class="project"><a href="#"><img class="projectImg" alt="placeholder" src="https://via.placeholder.com/525x315"> 
-    </a><br><p class="centered">${config.ipsum}</p></div></td><td><div class="project"><a href="#">
-    <img class="projectImg" alt="placeholder" src="https://via.placeholder.com/525x315"></a><br><p class="centered">${config.ipsum}</p>
-    </div></td></tr>`
+
+const projectElementStrings = [
+    `<td><div class="project"><a href="#"><img class="projectImg" alt="placeholder" src="https://via.placeholder.com/525x315"></a>` +
+    `<br><p class="centered title"> Lorem Ipsum </p><p class="centered">${config.ipsum}</p></div></td></tr>`
+    ,
+    `<tr><td><div class="project"><a href="#"><img class="projectImg" alt="placeholder" src="https://via.placeholder.com/525x315"> ` +
+    `</a><br><p class="centered title"> Lorem Ipsum </p><p class="centered">${config.ipsum}</p></div></td>` +
+    `<td><div class="project"><a href="#"><img class="projectImg" alt="placeholder" src="https://via.placeholder.com/525x315"></a>` +
+    `<br><p class="centered title"> Lorem Ipsum </p><p class="centered">${config.ipsum}</p></div></td></tr>`
+];
 
 const featureProjectElement = 
-    `<div class="project feature">
-    <a href="https://cyanidethejuggla.github.io/hangmans-revenge/">
-    <img class="featureImage" src="./assets/img/hangmanScreenshot.PNG" alt="placeholder">
-    </a><div class="row lh-none"><p class="centered featureText title "> Hangman's Revenge </p><p class="centered featureText caption "> A word game for the quick witted and thick skinned. </p></div></div>`;
+    `<div class="project feature"><a href="https://cyanidethejuggla.github.io/hangmans-revenge/"><img class="featureImage" src="./assets/img/hangmanScreenshot.PNG" ` + 
+    ` alt="placeholder"></a><div class="row lh-none"><p class="centered featureText title "> Hangman's Revenge </p><p class="centered featureText caption "> ` +
+    `A word game for the quick witted and thick skinned. </p></div></div>`;
 
+function projectElements(proj) {
+    if(proj.isProject){
+        const {title, img, discription, cssClass, link} = proj;
+        
+        const retVal = `<tr>` +
+            `<td>` +
+                `<div class="project${cssClass ? ' ' + cssClass : '' }">` +
+                    `<a href="#${link}">` +
+                        `<img class="projectImg" alt="${img.alt}" src="${img.src}"> ` +
+                    `</a><br>` +
+                    `<p class="centered"> ${title} </p>`+
+                    `<p class="centered">${discription}</p>` +
+                `</div>` +
+            `</td>`;
+        return retVal;
+    } else {
+        return projectElementStrings[1];
+    }
+}
 
 const resolutionDisplay = () => {
     const target = º(window);
@@ -54,6 +106,7 @@ const setContactInfo = () => {
     const target = º('#contact');
     target.html(contactElement);
 };
+
 const resetCountDown = () => {
     countDownTimer = config.countDown;
 };
@@ -98,7 +151,7 @@ const buildHeader = () => {
 };
 
 const hangmanAlt = () => {
-    //console.log('Firing hangmanAlt');
+    ////console.log('Firing hangmanAlt');
     const featureImageSelect = º('.featureImage');
     const featureLink = º('.project.feature a');
     const featureTitle = º('.featureText.title');
@@ -137,13 +190,21 @@ const stopCarousel = () => {
 });
 
 window.onload = () => {
-    console.log('window.onload()');
+    //console.log('window.onload()');
 };
 
 º(document).ready(()=>{
-    console.log('º(document).ready()');
-    for (let i = 0; i < config.projectRowsCount; i++) {
-        º('#projects').append( (i == 0) ? featureProjectElement : projectElements);
+    //console.log('º(document).ready()');
+    //console.log('config', config);
+    º('#projects').append(featureProjectElement);
+    for (let i = config.projects.length - 1; i > 0 ; i--) {
+        const project = config.projects[i];
+        º('#projects').append(projectElements(project));
+    }
+    
+    if (((config.projects.length - 1) % 2) != 0) º('#projects').children()[1].innerHTML += projectElementStrings[0];
+    for (let i = 0; i < (config.projectRowsCount - config.projects.length); i++) {
+        º('#projects').append(projectElements({isProject: false}));
     }
     º('#decline').click(()=>{
         dismissAlert();
@@ -162,7 +223,7 @@ window.onload = () => {
     resolutionDisplay();
     if(!config.dev) ñ();
     º("a:not(nav li a)").attr('target', '_blank');
-    º('.project.feature').children().css('position', 'relative');
-    º('.project.feature a').click(stopCarousel)
-    carousel = setInterval(hangmanAlt, 15000);
+    //º('.project.feature').children().css('position', 'relative');
+    //º('.project.feature a').click(stopCarousel)
+    //carousel = setInterval(hangmanAlt, 15000);
 }); 
